@@ -1,7 +1,7 @@
-import 'package:cellula_first_app/Features/authentication/PresentationLayer/Screens/sign_in.dart';
-import 'package:cellula_first_app/Features/authentication/PresentationLayer/Widgets/custom_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:tset_github/Features/authentication/PresentationLayer/Screens/sign_in.dart';
+import '../Widgets/custom_button.dart';
 import '../Widgets/text_form_field.dart';
 
 FirebaseAuth fireBase = FirebaseAuth.instance;
@@ -99,7 +99,10 @@ class _SignUpState extends State<SignUp> {
                                 null;
                               };
                       },
-                      child: CustomButton(isAuthentication: authenticated)),
+                      child: CustomButton(
+                        isAuthentication: authenticated,
+                        buttonText: 'SIGN-UP',
+                      )),
 
                   const SizedBox(height: 18),
 

@@ -1,9 +1,10 @@
-import 'package:cellula_first_app/Features/Home/Presentation/Screens/search.dart';
-import 'package:cellula_first_app/Features/authentication/PresentationLayer/Screens/sign_up.dart';
-import 'package:cellula_first_app/Features/authentication/PresentationLayer/Widgets/custom_button.dart';
-import 'package:cellula_first_app/Features/authentication/PresentationLayer/Widgets/text_form_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:tset_github/Features/authentication/PresentationLayer/Screens/sign_up.dart';
+
+import '../../../Home/Presentation/Screens/search.dart';
+import '../Widgets/custom_button.dart';
+import '../Widgets/text_form_field.dart';
 
 FirebaseAuth fireBase = FirebaseAuth.instance;
 
@@ -105,7 +106,10 @@ class _SignInState extends State<SignIn> {
         }
         login(context);
       },
-      child: CustomButton(isAuthentication: isAuthentication),
+      child: CustomButton(
+        isAuthentication: isAuthentication,
+        buttonText: 'LOGIN',
+      ),
     );
   }
 
@@ -113,7 +117,7 @@ class _SignInState extends State<SignIn> {
     return Center(
       child: GestureDetector(
         onTap: () {
-          Navigator.push(
+          Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (context) => const SignUp()));
         },
         child: const Text(
@@ -134,11 +138,16 @@ class _SignInState extends State<SignIn> {
         email: eMailController.text,
         password: passwordController.text,
       );
-      Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(builder: (context) => const Search()),
-        (route) => false,
-      );
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Search(),
+          ));
+      // Navigator.pushAndRemoveUntil(
+      //   context,
+      //   MaterialPageRoute(builder: (context) => Search()),
+      //   (route) => false,
+      // );
     } on FirebaseAuthException catch (error) {
       setState(() => isAuthentication = false);
       ScaffoldMessenger.of(context).clearSnackBars();

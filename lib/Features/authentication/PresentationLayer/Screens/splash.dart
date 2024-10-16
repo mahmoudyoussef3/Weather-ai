@@ -1,5 +1,12 @@
-import 'package:cellula_first_app/Features/authentication/PresentationLayer/Screens/sign_in.dart';
+import 'dart:async';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
+
+import '../../../Home/Presentation/BuisinessLogic/weather_cubit.dart';
+import '../../../Home/Presentation/Screens/search.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -8,12 +15,44 @@ class Splash extends StatefulWidget {
   State<Splash> createState() => _SplashState();
 }
 
+late StreamSubscription<User?> user;
+
 class _SplashState extends State<Splash> {
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   navigationToHHomeScreen();
-  // }
+  @override
+  void initState() {
+    super.initState();
+    user = FirebaseAuth.instance.authStateChanges().listen((user) {
+      if (user == null) {
+        print('User is currently signed out!');
+      } else {
+        print('User is signed in!');
+      }
+    });
+    getLocationData();
+    navigationToHHomeScreen();
+  }
+
+  Future<void> getLocationData() async {
+    final weatherCubit = context.read<WeatherCubit>();
+
+    try {
+      Position position = await Geolocator.getCurrentPosition();
+      List<Placemark> placeMarks =
+          await placemarkFromCoordinates(position.latitude, position.longitude);
+
+      // Update the country first
+
+      // BlocConsumer will now listen for WeatherCountryUpdated and fetch weather data
+    } catch (e) {
+      print('Error: $e');
+    }
+  }
+
+  @override
+  void dispose() {
+    user.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,39 +61,10 @@ class _SplashState extends State<Splash> {
       body: Padding(
         padding: const EdgeInsets.all(18.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Row(
-              children: [
-                const Spacer(),
-                InkWell(
-                  onTap: () {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SignIn(),
-                        ));
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(32),
-                        color: Colors.white),
-                    width: MediaQuery.of(context).size.width - 280,
-                    height: 40,
-                    child: const Center(
-                      child: Text(
-                        'Skip',
-                        style: TextStyle(
-                          letterSpacing: 2,
-                          color: Color(0xff001739),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 26,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+            Center(
+              child: Image.asset('assets/logo/my_logo.jpg'),
             ),
           ],
         ),
@@ -68,7 +78,7 @@ class _SplashState extends State<Splash> {
         return Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => const SignIn(),
+              builder: (context) => const Search(),
             ));
       },
     );

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "382561630744",
+    "project_id": "weather-ai-app",
+    "storage_bucket": "weather-ai-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:382561630744:android:195f44fb0e66494e50216d",
+        "android_client_info": {
+          "package_name": "com.example.tset_github"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJYpQdoglTCPOZqaVk_bkIVRXscjGxiAU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

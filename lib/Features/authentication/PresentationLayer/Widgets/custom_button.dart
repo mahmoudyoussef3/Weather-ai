@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key,required this.isAuthentication});
+  const CustomButton({super.key, required this.isAuthentication,required this.buttonText});
   final bool isAuthentication;
+  final String buttonText;
 
   @override
   Widget build(BuildContext context) {
@@ -16,15 +18,15 @@ class CustomButton extends StatelessWidget {
         child: Center(
           child: isAuthentication
               ? const CircularProgressIndicator(color: Colors.white)
-              : const Text(
-            'LOGIN',
-            style: TextStyle(
-              letterSpacing: 3,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 24,
-            ),
-          ),
+              :  Text(
+                  buttonText,
+                  style: const TextStyle(
+                    letterSpacing: 3,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
+                  ),
+                ),
         ),
       ),
     );

@@ -50,19 +50,19 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCFSsZyPt2DtCLtYGvlSa-D-5padYVRFoc',
-    appId: '1:284685648694:android:cd6cffae55cf20b03ca997',
-    messagingSenderId: '284685648694',
-    projectId: 'cellual-app',
-    storageBucket: 'cellual-app.appspot.com',
+    apiKey: 'AIzaSyCJYpQdoglTCPOZqaVk_bkIVRXscjGxiAU',
+    appId: '1:382561630744:android:195f44fb0e66494e50216d',
+    messagingSenderId: '382561630744',
+    projectId: 'weather-ai-app',
+    storageBucket: 'weather-ai-app.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBPLmZwhTlpFZdEMphUq0TbUSYD0IuqlS0',
-    appId: '1:284685648694:ios:933adeea2ffb80d93ca997',
-    messagingSenderId: '284685648694',
-    projectId: 'cellual-app',
-    storageBucket: 'cellual-app.appspot.com',
-    iosBundleId: 'com.example.cellulaFirstApp',
+    apiKey: 'AIzaSyDh03ThPv1OQ9VWLl62_QEe2OVn_2xImGo',
+    appId: '1:382561630744:ios:53acb53782f1c8ec50216d',
+    messagingSenderId: '382561630744',
+    projectId: 'weather-ai-app',
+    storageBucket: 'weather-ai-app.appspot.com',
+    iosBundleId: 'com.example.tsetGithub',
   );
 }
