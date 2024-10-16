@@ -47,7 +47,6 @@ This project follows **Clean Architecture** principles to maintain a separation 
 ---
 
 ## Screenshots
-Here’s a look at the home screen displaying the list of products:
 
 ![WeatherData Screen](screenshots/weatherData.jpg)
 
